@@ -1,12 +1,6 @@
 use rand::{Rng};
 use std::collections::HashMap;
 
-pub fn exchange(nums: &mut Vec<usize>, l: usize, r: usize) {
-    let tmp = nums[l];
-    nums[l] = nums[r];
-    nums[r] = tmp;
-}
-
 pub fn generate_random_sequence(keys_tones: &HashMap<usize, &&str>) {
     let keys_tones_length = keys_tones.len();
     let mut nums: Vec<usize> = (0..keys_tones_length).collect();
@@ -14,7 +8,8 @@ pub fn generate_random_sequence(keys_tones: &HashMap<usize, &&str>) {
     for i in 1..25 {
         for j in 0..keys_tones_length {
             let secret_number = rand::thread_rng().gen_range(0, keys_tones_length);
-            exchange(&mut nums, j, secret_number);
+            nums.swap(j, secret_number);
+
         }
         for t in &nums {
             print!("{} ", keys_tones.get(t).unwrap());
