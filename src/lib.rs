@@ -19,14 +19,3 @@ pub fn generate_random_sequence(keys_tones: &HashMap<usize, &&str>) {
         }
     }
 }
-
-
-#[test]
-fn exchage_test() {
-    let mut nums: Vec<usize> = vec![1, 2, 3];
-    exchange(&mut nums, 0, 2);
-    assert_eq!(
-        vec![3, 2, 1],
-        nums
-    );
-}
